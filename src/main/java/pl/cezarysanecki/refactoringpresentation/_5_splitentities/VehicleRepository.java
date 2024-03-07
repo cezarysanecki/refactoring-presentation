@@ -7,9 +7,11 @@ import java.util.Set;
 @RequiredArgsConstructor
 class VehicleRepository {
 
-    private final Policy policy;
+    private final PolicyRepository policyRepository;
 
     Set<Vehicle> findAllByPolicyId(Long policyId) {
+        Policy policy = policyRepository.findById(policyId)
+                .orElseThrow(() -> new IllegalArgumentException("cannot find policy by id: " + policyId));
         return policy.getVehicles();
     }
 

@@ -19,9 +19,7 @@ class VehicleService {
     private final PolicyRepository policyRepository;
 
     void sendAllVehicles(Long policyId) {
-        Policy policy = policyRepository.findById(policyId)
-                .orElseThrow(() -> new IllegalArgumentException("cannot find policy by id: " + policyId));
-        VehicleRepository vehicleRepository = new VehicleRepository(policy);
+        VehicleRepository vehicleRepository = new VehicleRepository(policyRepository);
         Set<Year> vehiclesProductionYears = vehicleRepository.findAllByPolicyId(policyId)
                 .stream()
                 .map(Vehicle::getProductionYear)
