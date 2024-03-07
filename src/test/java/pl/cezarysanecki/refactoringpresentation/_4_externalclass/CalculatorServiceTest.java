@@ -15,4 +15,20 @@ class CalculatorServiceTest {
         assertEquals("132-001", result);
     }
 
+    @Test
+    void return_proper_value_for_service_call_wrapper() {
+        String result = calculatorService.call(new TestUnitObject());
+
+        assertEquals("abc-001", result);
+    }
+
+    class TestUnitObject implements UnitObject {
+
+        @Override
+        public String returnSomeValue() {
+            return "abc";
+        }
+
+    }
+
 }
