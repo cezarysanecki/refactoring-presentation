@@ -7,4 +7,7 @@ class Battery {
 
     int powerLevel;
 
+    boolean isLowPower() {
+        return getPowerLevel() < 0.06;
+    }
 }

@@ -9,14 +9,14 @@ package pl.cezarysanecki.refactoringpresentation._3_anemicmodel;
 class BatteryService {
 
     void checkBattery(Battery battery) {
-        if (battery.getPowerLevel() < 0.06) {
+        if (battery.isLowPower()) {
             sendToCharge(battery);
         }
         // other logic
     }
 
     boolean canLendBattery(Battery battery) {
-        return !(battery.getPowerLevel() < 0.06);
+        return !battery.isLowPower();
     }
 
     private void sendToCharge(Battery battery) {
