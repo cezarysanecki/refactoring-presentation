@@ -4,10 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
-
-import java.util.Set;
 
 @Entity
 @Getter
@@ -23,8 +20,5 @@ class Policy {
     private String value4;
     private String value5;
     // many other fields
-
-    @OneToMany
-    private Set<Vehicle> vehicles;
 
 }

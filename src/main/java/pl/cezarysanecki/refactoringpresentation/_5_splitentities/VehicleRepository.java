@@ -1,18 +1,11 @@
 package pl.cezarysanecki.refactoringpresentation._5_splitentities;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Set;
 
-@RequiredArgsConstructor
-class VehicleRepository {
+interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
-    private final PolicyRepository policyRepository;
-
-    Set<Vehicle> findAllByPolicyId(Long policyId) {
-        Policy policy = policyRepository.findById(policyId)
-                .orElseThrow(() -> new IllegalArgumentException("cannot find policy by id: " + policyId));
-        return policy.getVehicles();
-    }
+    Set<Vehicle> findAllByPolicyId(Long policyId);
 
 }
