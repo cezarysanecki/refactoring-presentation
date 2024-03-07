@@ -20,12 +20,16 @@ class VehicleValidator {
         Set<Year> vehiclesProductionYears = vehicles.stream()
                 .map(Vehicle::getProductionYear)
                 .collect(Collectors.toUnmodifiableSet());
+        validateIfVehiclesAreNotTooOld(vehiclesProductionYears);
+        // ... other validators
+    }
+
+    private static void validateIfVehiclesAreNotTooOld(Set<Year> vehiclesProductionYears) {
         boolean isAnyTooOldVehicle = vehiclesProductionYears.stream()
                 .allMatch(productionYear -> productionYear.isBefore(Year.of(2000)));
         if (isAnyTooOldVehicle) {
             throw new IllegalStateException("we do not handle vehicles older than made in 2000");
         }
-        // ... other validators
     }
 
 }
