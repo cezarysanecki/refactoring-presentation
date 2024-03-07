@@ -10,4 +10,8 @@ class Battery {
     boolean isLowPower() {
         return getPowerLevel() < 0.06;
     }
+
+    boolean isChargedEnough() {
+        return !isLowPower();
+    }
 }

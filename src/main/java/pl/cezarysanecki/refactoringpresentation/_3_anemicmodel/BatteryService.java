@@ -16,7 +16,7 @@ class BatteryService {
     }
 
     boolean canLendBattery(Battery battery) {
-        return !battery.isLowPower();
+        return battery.isChargedEnough();
     }
 
     private void sendToCharge(Battery battery) {
