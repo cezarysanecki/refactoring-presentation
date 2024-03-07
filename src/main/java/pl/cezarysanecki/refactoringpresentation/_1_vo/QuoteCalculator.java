@@ -14,14 +14,11 @@ class QuoteCalculator {
 
     private final ExternalServiceQuoteCalculator externalServiceQuoteCalculator;
 
-    double calculateQuoteFor(String vinNumber, String registrationNumber) {
-        if (vinNumber == null) {
-            throw new IllegalArgumentException("vin number cannot be null");
-        }
-        if (vinNumber.trim().length() != 17) {
-            throw new IllegalArgumentException("vin number should contains 17 letters");
-        }
-        return externalServiceQuoteCalculator.calculate(vinNumber, registrationNumber);
+    double calculateQuoteFor(String vinNumberValue, String registrationNumberValue) {
+        VinNumber vinNumber = new VinNumber(vinNumberValue);
+        RegistrationNumber registrationNumber = new RegistrationNumber(registrationNumberValue);
+
+        return externalServiceQuoteCalculator.calculate(vinNumber.asString(), registrationNumber.asString());
     }
 
     private class ExternalServiceQuoteCalculator {
