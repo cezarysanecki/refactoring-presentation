@@ -19,7 +19,7 @@ class CalculatorService {
     }
 
     private String prepareResult(String value) {
-        return value + "-000";
+        return value + "-001";
     }
 
 }
