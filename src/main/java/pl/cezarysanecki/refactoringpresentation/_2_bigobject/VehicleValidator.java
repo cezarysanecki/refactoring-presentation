@@ -24,7 +24,7 @@ class VehicleValidator {
         // ... other validators
     }
 
-    private static void validateIfVehiclesAreNotTooOld(Set<Year> vehiclesProductionYears) {
+    static void validateIfVehiclesAreNotTooOld(Set<Year> vehiclesProductionYears) {
         boolean isAnyTooOldVehicle = vehiclesProductionYears.stream()
                 .allMatch(productionYear -> productionYear.isBefore(Year.of(2000)));
         if (isAnyTooOldVehicle) {
