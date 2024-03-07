@@ -14,11 +14,15 @@ class QuoteCalculator {
 
     private final ExternalServiceQuoteCalculator externalServiceQuoteCalculator;
 
+    double calculateQuoteFor(VinNumber vinNumber, RegistrationNumber registrationNumber) {
+        return externalServiceQuoteCalculator.calculate(vinNumber.asString(), registrationNumber.asString());
+    }
+
     double calculateQuoteFor(String vinNumberValue, String registrationNumberValue) {
         VinNumber vinNumber = new VinNumber(vinNumberValue);
         RegistrationNumber registrationNumber = new RegistrationNumber(registrationNumberValue);
 
-        return externalServiceQuoteCalculator.calculate(vinNumber.asString(), registrationNumber.asString());
+        return calculateQuoteFor(vinNumber, registrationNumber);
     }
 
     private class ExternalServiceQuoteCalculator {
