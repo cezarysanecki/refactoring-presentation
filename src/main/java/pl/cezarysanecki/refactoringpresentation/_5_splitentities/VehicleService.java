@@ -16,10 +16,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 class VehicleService {
 
-    private final PolicyRepository policyRepository;
+    private final VehicleRepository vehicleRepository;
 
     void sendAllVehicles(Long policyId) {
-        VehicleRepository vehicleRepository = new VehicleRepository(policyRepository);
         Set<Year> vehiclesProductionYears = vehicleRepository.findAllByPolicyId(policyId)
                 .stream()
                 .map(Vehicle::getProductionYear)
