@@ -2,6 +2,7 @@ package pl.cezarysanecki.refactoringpresentation._2_bigobject;
 
 import java.time.Year;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Problems:
@@ -16,9 +17,10 @@ class VehicleValidator {
     }
 
     void validate(Set<Vehicle> vehicles) {
-        boolean isAnyTooOldVehicle = vehicles
-                .stream()
+        Set<Year> vehiclesProductionYears = vehicles.stream()
                 .map(Vehicle::getProductionYear)
+                .collect(Collectors.toUnmodifiableSet());
+        boolean isAnyTooOldVehicle = vehiclesProductionYears.stream()
                 .allMatch(productionYear -> productionYear.isBefore(Year.of(2000)));
         if (isAnyTooOldVehicle) {
             throw new IllegalStateException("we do not handle vehicles older than made in 2000");
