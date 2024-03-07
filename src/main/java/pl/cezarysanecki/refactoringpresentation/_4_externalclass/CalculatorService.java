@@ -8,9 +8,18 @@ package pl.cezarysanecki.refactoringpresentation._4_externalclass;
  */
 class CalculatorService {
 
+    String call(UnitObject unitObject) {
+        // a lot of logic
+        return prepareResult(unitObject.returnSomeValue());
+    }
+
     String call(ExternalLibraryObject externalLibraryObject) {
         // a lot of logic
-        return externalLibraryObject.returnSomeValue() + "-000";
+        return prepareResult(externalLibraryObject.returnSomeValue());
+    }
+
+    private String prepareResult(String value) {
+        return value + "-000";
     }
 
 }
