@@ -8,4 +8,8 @@ interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
     Set<Vehicle> findAllByPolicyId(Long policyId);
 
+    default Vehicles findVehiclesBy(Long policyId) {
+        return new Vehicles(findAllByPolicyId(policyId));
+    }
+
 }
