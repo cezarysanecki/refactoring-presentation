@@ -1,6 +1,7 @@
 package pl.cezarysanecki.refactoringpresentation._2_bigobject;
 
 import java.time.Year;
+import java.util.Set;
 
 /**
  * Problems:
@@ -11,7 +12,11 @@ import java.time.Year;
 class VehicleValidator {
 
     void validate(Policy policy) {
-        boolean isAnyTooOldVehicle = policy.getVehicles()
+        validate(policy.getVehicles());
+    }
+
+    void validate(Set<Vehicle> vehicles) {
+        boolean isAnyTooOldVehicle = vehicles
                 .stream()
                 .map(Vehicle::getProductionYear)
                 .allMatch(productionYear -> productionYear.isBefore(Year.of(2000)));
