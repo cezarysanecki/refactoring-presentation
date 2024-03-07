@@ -27,9 +27,13 @@ class QuoteCalculator {
 
     private class ExternalServiceQuoteCalculator {
 
-        double calculate(String vinNumber, String registrationNumber) {
+        double calculate(VinNumber vinNumber, RegistrationNumber registrationNumber) {
             // call external API
             return 0.0;
+        }
+
+        double calculate(String vinNumber, String registrationNumber) {
+            return calculate(new VinNumber(vinNumber), new RegistrationNumber(registrationNumber));
         }
 
     }
