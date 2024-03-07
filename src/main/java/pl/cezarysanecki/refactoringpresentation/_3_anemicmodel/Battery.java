@@ -8,7 +8,7 @@ class Battery {
     int powerLevel;
 
     boolean isLowPower() {
-        return getPowerLevel() < 0.06;
+        return this.powerLevel < 0.06;
     }
 
     boolean isChargedEnough() {
