@@ -3,7 +3,7 @@ package pl.cezarysanecki.refactoringpresentation._7_cognitiveload;
 import lombok.Value;
 
 @Value
-class AvailableBook {
+class AvailableBook implements BookInterface {
 
     BookId bookId;
     Book book;
@@ -29,7 +29,7 @@ class AvailableBook {
 }
 
 @Value
-class ReservedBook {
+class ReservedBook implements BookInterface {
 
     BookId bookId;
     Book book;
@@ -55,7 +55,7 @@ class ReservedBook {
 }
 
 @Value
-class RentedBook {
+class RentedBook implements BookInterface {
 
     BookId bookId;
     Book book;
@@ -76,7 +76,7 @@ class RentedBook {
 }
 
 @Value
-class WithdrawnBook {
+class WithdrawnBook implements BookInterface {
 
     BookId bookId;
     Book book;
