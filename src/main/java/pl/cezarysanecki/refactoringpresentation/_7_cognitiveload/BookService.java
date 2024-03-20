@@ -9,18 +9,20 @@ class BookService {
 
     public void reserve(BookId bookId, ClientId clientId) {
         Book book = bookRepository.findBy(bookId);
+        AvailableBook availableBook = new AvailableBook(book);
 
-        book.reserve(clientId);
+        availableBook.reserve(clientId);
 
-        bookRepository.save(book);
+        bookRepository.save(availableBook.getBook());
     }
 
     public void rent(BookId bookId) {
         Book book = bookRepository.findBy(bookId);
+        ReservedBook reservedBook = new ReservedBook(book);
 
-        book.rent();
+        reservedBook.rent();
 
-        bookRepository.save(book);
+        bookRepository.save(reservedBook.getBook());
     }
 
 }
