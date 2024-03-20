@@ -6,4 +6,18 @@ interface BookRepository {
 
     Book save(Book book);
 
+    class BookRepositoryImpl implements BookRepository {
+
+        @Override
+        public Book findBy(final BookId bookId) {
+            return null;
+        }
+
+        @Override
+        public Book save(final Book book) {
+            return null;
+        }
+
+    }
+
 }
